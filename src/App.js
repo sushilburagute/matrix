@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import "./App.scss";
 
 import { Canvas, useFrame } from "react-three-fiber";
-import { softShadows, MeshWobbleMaterial, OrbitControls } from "drei";
+import { softShadows, MeshWobbleMaterial, OrbitControls, Text } from "drei";
 
 import { useSpring, a } from "react-spring/three";
 
@@ -17,7 +17,7 @@ const SpinningMesh = ({ position, args, color, speed }) => {
   const [expand, setExpand] = useState(false);
 
   const props = useSpring({
-    scale: expand ? [1.4, 1.4, 1.4] : [1, 1, 1],
+    scale: expand ? [1.5, 1.5, 1.5] : [1, 1, 1],
   });
 
   return (
@@ -48,7 +48,7 @@ function App() {
       <Canvas
         shadowMap
         colorManagement
-        camera={{ position: [-5, 2, 10], fov: 60 }}
+        camera={{ position: [0, 0, 10], fov: 60 }}
       >
         <ambientLight intensity={0.7} />
         <directionalLight
@@ -76,16 +76,40 @@ function App() {
             <shadowMaterial attach="material" opacity={0.3} />
           </mesh>
         </group>
-
+        {/* React */}
         <SpinningMesh
           position={[0, 1, 0]}
           args={[3, 2, 1]}
-          color="#61dafb"
+          color="#1bc4e0"
           speed={2}
         />
-        <SpinningMesh position={[-2, 1, -5]} color="#DD0031" speed={6} />
-        <SpinningMesh position={[5, 1, -2]} color="#41B883" speed={6} />
+        {/* Angular */}
+        <SpinningMesh
+          position={[-8, 1, -7]}
+          args={[2, 2, 2]}
+          color="#DD0031"
+          speed={6}
+        />
+        {/* Vue */}
+        <SpinningMesh
+          position={[8, 1, -7]}
+          args={[2, 2, 2]}
+          color="#41B883"
+          speed={6}
+        />
         <OrbitControls />
+        <Text
+          className="docs"
+          receiveShadow
+          color="#040404"
+          fontSize="0.5"
+          position={[0, -1.7, 2]}
+          textAlign="justify"
+          anchorX="center"
+          anchorY="middle"
+        >
+          The Matrix took years to build.
+        </Text>
       </Canvas>
     </>
   );

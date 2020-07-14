@@ -4,10 +4,12 @@ const Header = () => {
   return (
     <header>
       <div className="title">
-        <span>JS Matrix</span>
+        <span>
+          <h1>JS Matrix </h1>
+        </span>
       </div>
       <div className="subtitle">
-        <span>Blue Pill, Red Pill or the Green Pill? </span>
+        <span>Blue Pill, Red Pill or the Green Pill?</span>
       </div>
     </header>
   );
